@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CMSTUDIOS | Contact</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#001f3f;
+  --white:#fff;
+  --yellow:#ffcc00;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#f4f6f8;color:var(--navy);line-height:1.6;}
+nav{position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:15px 30px;}
+nav .logo img{height:60px;}
+nav ul{list-style:none;display:flex;gap:25px;}
+nav ul li a{text-decoration:none;color:var(--white);font-weight:500;position:relative;padding-bottom:4px;}
+nav ul li a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--yellow);transition:width 0.3s;}
+nav ul li a:hover::after{width:100%;}
+nav ul li a:hover{color:var(--yellow);}
+.menu-toggle{display:none;font-size:1.5rem;color:var(--white);cursor:pointer;}
+@media(max-width:768px){
+  nav ul{display:none;flex-direction:column;background:var(--navy);position:absolute;top:60px;right:0;width:200px;padding:20px;border-radius:0 0 0 10px;}
+  nav ul.show{display:flex;}
+  .menu-toggle{display:block;}
+}
+.contact-container{
+  max-width:900px;
+  margin:100px auto 40px;
+  padding:20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  align-items:center;
+}
+.contact-info{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+.contact-info p{
+  font-size:1.1rem;
+}
+.contact-info i{
+  color:var(--yellow);
+  margin-right:10px;
+}
+iframe{
+  width:100%;
+  height:350px;
+  border:0;
+  border-radius:15px;
+}
+@media(max-width:768px){
+  .contact-container{
+    grid-template-columns:1fr;
+    margin-top:80px;
+  }
+}
+footer{
+  background: rgba(0,0,0,0.6);
+  color: var(--white);
+  padding: 50px 20px 20px;
+  font-family: 'Poppins', sans-serif;
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+.footer-container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:auto;
+}
+.glass-card{
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s, background 0.3s;
+}
+.glass-card:hover{
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.1);
+}
+.footer-about h3, .footer-links h4, .footer-contact h4, .footer-social h4{
+  margin-bottom: 15px;
+  color: var(--yellow);
+}
+.footer-about p{
+  line-height:1.5;
+  font-size:0.95rem;
+}
+.footer-links ul{
+  list-style:none;
+}
+.footer-links ul li{
+  margin-bottom:10px;
+}
+.footer-links ul li a{
+  color: var(--white);
+  text-decoration:none;
+  transition:0.3s;
+}
+.footer-links ul li a:hover{
+  color: var(--yellow);
+}
+.footer-contact p, .footer-social .socials a{
+  margin-bottom:10px;
+  font-size:0.95rem;
+}
+.footer-social .socials a{
+  display:inline-block;
+  margin-right:10px;
+  color: var(--yellow);
+  font-size:1.2rem;
+  transition:0.3s;
+}
+.footer-social .socials a:hover{
+  color:#fff;
+}
+.footer-bottom{
+  text-align:center;
+  margin-top:30px;
+  font-size:0.85rem;
+}
+.footer-bottom a{
+  color: var(--yellow);
+  text-decoration:none;
+}
+.footer-bottom a:hover{
+  color:#fff;
+}
+@media(max-width:768px){
+  .footer-container{
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+}
+@media(max-width:480px){
+  .footer-container{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="logo"><img src="CMStudio.png" alt="CMSTUDIOS Logo"></div>
+  <div class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('show')">
+    <i class="fas fa-bars"></i>
+  </div>
+  <ul>
+    <li><a href="index.html">Back to Home</a></li>
+  </ul>
+</nav>
+
+<section class="contact-container">
+  <div class="contact-info">
+    <p><i class="fas fa-phone"></i> +27 72 430 7317</p>
+    <p><i class="fas fa-phone"></i> +27 81 840 1398</p>
+    <p><i class="fas fa-envelope"></i> info@cmstudio.co.za</p>
+    <p><i class="fas fa-map-marker-alt"></i> Mbombela, South Africa</p>
+  </div>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3569.234123456!2d30.9618!3d-25.4695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec8f6a1d3abc123%3A0xabcdef123456789!2sMbombela%2C%20South%20Africa!5e0!3m2!1sen!2sza!4v1692100000000!5m2!1sen!2sza" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-about glass-card">
+      <h3>CMSTUDIOS</h3>
+      <p>We are a creative digital studio offering graphic design, photography, videography, and tech solutions. Helping your brand shine online!</p>
+    </div>
+    <div class="footer-contact glass-card">
+      <h4>Contact</h4>
+      <p><i class="fas fa-phone"></i> +27 81 840 1398</p>
+      <p><i class="fas fa-envelope"></i> info@cmstudio.co.za</p>
+      <p><i class="fas fa-map-marker-alt"></i> Mbombela, South Africa</p>
+    </div>
+    <div class="footer-social glass-card">
+      <h4>Follow Us</h4>
+      <div class="socials">
+        <a href="https://facebook.com/Ntando_J_Ngceshe" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/n.t.a.n.d.o.e" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@n.t.a.n.d.o0" target="_blank"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom glass-card">
+    <p>&copy; 2025 CMSTUDIOS. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

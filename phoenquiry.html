@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMSTUDIOS | Service Cart</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #001f3f;
+  --purple: #3c1361;
+  --white: #ffffff;
+  --yellow: #ffcc00;
+}
+
+* {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body {background:#f4f6f8;color:var(--navy);line-height:1.6;}
+
+nav {
+  position: fixed; top:0; left:0; width:100%; background:rgba(0,0,0,0.5); backdrop-filter:blur(8px);
+  z-index:1000; display:flex; justify-content:space-between; align-items:center; padding:15px 30px;
+}
+nav .logo img {height:60px;}
+nav ul {list-style:none; display:flex; gap:25px;}
+nav ul li a {text-decoration:none;color:var(--white); font-weight:500; position:relative; padding-bottom:4px;}
+nav ul li a::after {content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--yellow);transition:width 0.3s;}
+nav ul li a:hover::after {width:100%;}
+nav ul li a:hover {color:var(--yellow);}
+.menu-toggle {display:none;font-size:1.5rem;color:var(--white);cursor:pointer;}
+@media(max-width:768px){
+  nav ul{display:none;flex-direction:column;background:var(--navy);position:absolute;top:60px;right:0;width:200px;padding:20px;border-radius:0 0 0 10px;}
+  nav ul.show{display:flex;}
+  .menu-toggle{display:block;}
+}
+
+header {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: var(--white); padding:100px 20px 40px; text-align:center; margin-top:60px; border-radius:0 0 20px 20px;
+}
+header h1 {font-size:2rem; margin-bottom:10px;}
+header p {font-size:1.1rem;}
+
+.cart-container {
+  max-width: 700px;
+  background: #ffffff;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+}
+
+.cart-container h2 {text-align:center; margin-bottom: 25px; color: var(--navy);}
+.cart-container label {font-weight:bold; margin-top:10px; display:block;}
+.cart-container select, .cart-container input {width:100%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc;}
+.cart-container button {width:100%; padding:14px; border:none; background: var(--yellow); color:var(--navy); font-weight:bold; border-radius:30px; font-size:1rem; cursor:pointer; margin-top:10px; transition:0.3s;}
+.cart-container button:hover {background:#e6b800;}
+.cart-total {text-align:right;font-size:1.2rem;margin-top:20px;font-weight:bold;}
+
+/* Bank Transfer Section */
+#bankPayment {
+  max-width:700px;
+  margin:40px auto;
+  padding:30px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#0f2027,#2c5364);
+  color:white;
+  text-align:center;
+  box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+#bankPayment h2 {color:#FFD700; margin-bottom:15px;}
+#bankPayment p {margin:10px 0; font-size:1.1rem;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><img src="CMStudio.png" alt="CMSTUDIOS Logo"></div>
+  <div class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('show')">
+    <i class="fas fa-bars"></i>
+  </div>
+  <ul>
+    <li><a href="photography.html">Back</a></li>
+  </ul>
+</nav>
+
+<header>
+  <h1>CMSTUDIOS Service Cart</h1>
+  <p>Select your service, options, location, and see the total price.</p>
+</header>
+
+<section class="cart-container">
+  <h2>Select Your Service</h2>
+
+  <!-- Formspree form -->
+  <form action="https://formspree.io/f/xzzvqpwl" method="POST" id="serviceForm">
+    <label for="serviceType">Service Type:</label>
+    <select id="serviceType" name="serviceType" required>
+      <option value="" disabled selected>Select service</option>
+      <option value="Graphic Design">Graphic Design</option>
+      <option value="Photography">Photography</option>
+      <option value="Videography">Videography</option>
+    </select>
+
+    <label for="serviceOption">Service Option:</label>
+    <select id="serviceOption" name="serviceOption" required>
+      <option value="" disabled selected>Select option</option>
+    </select>
+
+    <label for="distance">Distance to Location (km) | (0) For Graphic Design:</label>
+    <input type="number" id="distance" name="distance" min="0" placeholder="Enter distance in km" required>
+
+    <label for="clientName">Your Name:</label>
+    <input type="text" id="clientName" name="clientName" placeholder="Full Name" required>
+
+    <label for="clientEmail">Email:</label>
+    <input type="email" id="clientEmail" name="clientEmail" placeholder="Your Email" required>
+
+    <label for="clientPhone">Phone:</label>
+    <input type="text" id="clientPhone" name="clientPhone" placeholder="Your Phone Number" required>
+
+    <div class="cart-total">
+      Total: <span id="totalAmount">R0</span>
+      <input type="hidden" name="totalAmount" id="hiddenTotal">
+    </div>
+
+    <button type="button" id="confirmBtn">Confirm & See Bank Details</button>
+    <button type="submit" style="margin-top:10px;background:#3c1361;color:#fff;">Submit Service Request</button>
+  </form>
+</section>
+
+<section id="bankPayment" style="display:none;">
+  <h2>Bank Transfer Details</h2>
+  <p>Thank you for choosing CMSTUDIOS!</p>
+  <p>Please transfer the total amount to the following account:</p>
+  <p><strong>Account Name:</strong> CMSTUDIOS</p>
+  <p><strong>Bank:</strong> FNB</p>
+  <p><strong>Account Number:</strong> 63053939155</p>
+  <p><strong>Branch Code:</strong> 250655</p>
+  <p>After payment, email proof to <strong>info@cmstudio.online</strong></p>
+  <p>Total Amount: <strong>R<span id="bankTotal">0</span></strong></p>
+</section>
+
+<script>
+// Define pricing rules
+const pricing = {
+  "Graphic Design": [
+    {label: "3 people", price: 200},
+    {label: "4-7 people", price: 250},
+    {label: "8-15 people", price: 300},
+    {label: "Logo Design", price: 400}
+  ],
+  "Photography": [
+    {label: "30 minutes", price: 500},
+    {label: "1 hour", price: 1000},
+    {label: "3 hours", price: 2000},
+    {label: "Whole day", price: 5000}
+  ],
+  "Videography": [
+    {label: "Regular", price: 3500},
+    {label: "With Drone", price: 5000},
+    {label: "Drone + 2 screens", price: 7000},
+    {label: "3 cameras, drone, 2 screens, 100 printed programmes", price: 9000},
+    {label: "Deluxe Plan", price: 14000}
+  ]
+};
+
+const distanceRate = 10; // R10 per km
+
+const serviceType = document.getElementById('serviceType');
+const serviceOption = document.getElementById('serviceOption');
+const distanceInput = document.getElementById('distance');
+const totalAmount = document.getElementById('totalAmount');
+const hiddenTotal = document.getElementById('hiddenTotal');
+const confirmBtn = document.getElementById('confirmBtn');
+const bankPayment = document.getElementById('bankPayment');
+const bankTotal = document.getElementById('bankTotal');
+
+// Populate options
+serviceType.addEventListener('change', () => {
+  serviceOption.innerHTML = '<option value="" disabled selected>Select option</option>';
+  const options = pricing[serviceType.value];
+  options.forEach(opt => {
+    const el = document.createElement('option');
+    el.value = opt.price;
+    el.textContent = opt.label + " (R" + opt.price + ")";
+    serviceOption.appendChild(el);
+  });
+  calculateTotal();
+});
+
+// Calculate total
+function calculateTotal() {
+  const basePrice = parseInt(serviceOption.value) || 0;
+  const distance = parseInt(distanceInput.value) || 0;
+  const total = basePrice + distance * distanceRate;
+  totalAmount.textContent = "R" + total;
+  bankTotal.textContent = total;
+  hiddenTotal.value = total;
+}
+
+// Update total when inputs change
+serviceOption.addEventListener('change', calculateTotal);
+distanceInput.addEventListener('input', calculateTotal);
+
+// Confirm button
+confirmBtn.addEventListener('click', () => {
+  if(!serviceType.value || !serviceOption.value || !distanceInput.value || !document.getElementById('clientName').value || !document.getElementById('clientEmail').value || !document.getElementById('clientPhone').value){
+    alert("Please fill all fields!");
+    return;
+  }
+  bankPayment.style.display = "block";
+  bankPayment.scrollIntoView({behavior:"smooth"});
+});
+</script>
+
+</body>
+</html>
