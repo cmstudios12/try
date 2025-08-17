@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -16,42 +15,6 @@
     }
     * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
     body { background: var(--white); color: var(--navy); line-height:1.6; scroll-behavior:smooth; }
-
-    img {
-  max-width: 100%;
-  height: auto;
-}
-.services {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.service-card {
-  flex: 1 1 300px; /* Grow, shrink, minimum width */
-}
-/* For tablets and smaller */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-  }
-
-  .services {
-    flex-direction: column;
-  }
-}
-
-/* For mobile phones */
-@media (max-width: 480px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  .service-card {
-    padding: 10px;
-  }
-}
-
 
     nav {
       position: fixed; top:0; left:0; width:100%; background: rgba(0,0,0,0.5);
@@ -203,18 +166,6 @@
 
     form { background:#f9f9f9; padding:30px; border-radius:10px; display:grid; gap:15px; }
     form input, form textarea { width:100%; padding:12px; border:1px solid #ccc; border-radius:8px; }
-    /* Bad (fixed width) */
-.container {
-  width: 1200px;
-}
-
-/* Good (responsive) */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 
     footer{
   background: rgba(0, 0, 0, 0.6);
@@ -286,6 +237,126 @@
   #backToTop i {
     animation: float 2s infinite ease-in-out;
   }
+
+  body {
+      font-family: "Poppins", sans-serif;
+      background: #f4f7fb;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Floating buttons */
+    .toggle-btn {
+      position: fixed;
+      bottom: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    .whatsapp-toggle {
+      right: 20px;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+    }
+
+    .chat-toggle {
+      right: 90px;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+    }
+
+    /* Chat window */
+    .chat-window {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      width: 320px;
+      height: 420px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1000;
+      backdrop-filter: blur(15px);
+      animation: slideUp 0.4s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, #007bff, #00c6ff);
+      color: white;
+      padding: 12px;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    .chat-body {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .chat-body p {
+      margin: 6px 0;
+    }
+
+    .chat-footer {
+      padding: 10px;
+      border-top: 1px solid #ddd;
+      display: flex;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+    }
+
+    .chat-footer input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      margin-right: 6px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .chat-footer button {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .chat-footer button:hover {
+      background: linear-gradient(135deg, #0056b3, #003d80);
+    }
+
 
 .glass-card:hover{
   transform: translateY(-5px);
@@ -361,6 +432,8 @@
     .modal-buttons { margin-top:20px; display:flex; justify-content:space-around; gap:10px; }
     @keyframes fadeIn { from{transform:scale(0.8); opacity:0;} to{transform:scale(1); opacity:1;} }
   </style>
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/2d3d5a2d3b.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -458,6 +531,29 @@
         <span class="dot"></span>
         <span class="dot"></span>
       </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp Toggle -->
+  <div class="toggle-btn whatsapp-toggle" 
+       onclick="window.open('https://wa.me/27818401398','_blank')">
+    <i class="fab fa-whatsapp"></i>
+  </div>
+
+  <!-- AI Chat Toggle -->
+  <div class="toggle-btn chat-toggle" onclick="toggleChat()">
+    <i class="fas fa-robot"></i>
+  </div>
+
+  <!-- Chat Window -->
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">AI Assistant 🤖</div>
+    <div class="chat-body" id="chatBody">
+      <p><b>AI:</b> Hello 👋 How can I help you today?</p>
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="userInput" placeholder="Type a message...">
+      <button onclick="sendMessage()">Send</button>
     </div>
   </div>
 
@@ -659,6 +755,32 @@ function goToSlide(index){
 dots.forEach((dot,index) => {
   dot.addEventListener('click',()=>goToSlide(index));
 });
+
+function toggleChat() {
+      const chat = document.getElementById("chatWindow");
+      chat.style.display = chat.style.display === "flex" ? "none" : "flex";
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const chatBody = document.getElementById("chatBody");
+      if (input.value.trim() !== "") {
+        let userMsg = document.createElement("p");
+        userMsg.innerHTML = "<b>You:</b> " + input.value;
+        chatBody.appendChild(userMsg);
+
+        // Fake AI response (can be upgraded to real AI later)
+        setTimeout(() => {
+          let aiMsg = document.createElement("p");
+          aiMsg.innerHTML = "<b>AI:</b> I’m still learning 🤖 but I’ll do my best!";
+          chatBody.appendChild(aiMsg);
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }, 700);
+
+        input.value = "";
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+    }
 
 const backToTopBtn = document.getElementById("backToTop");
 
