@@ -88,6 +88,14 @@
   <div class="orb one"></div>
   <div class="orb two"></div>
   <div class="orb three"></div>
+  <!-- Replace this -->
+<!-- <div class="logo"><span>CM</span></div> -->
+
+<!-- With this -->
+<div class="logo">
+  <img src="cmstudio.png" alt="CMSTUDIOS Logo" style="width:80px; height:80px; border-radius:16px; object-fit:contain;">
+</div>
+
 
   <section class="card">
     <div class="logo"><span>CM</span></div>
@@ -107,7 +115,7 @@
 
     <div class="icons">
       <a href="https://instagram.com/cmstudios" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6.8a1.2 1.2 0 1 1-1.2 1.2A1.2 1.2 0 0 1 18 6.8z"/></svg></a>
-      <a href="https://facebook.com/cmstudios" aria-label="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M13 22v-8h3l.5-4H13V8.5c0-1.1.3-1.8 1.9-1.8H17V3.1C16.6 3 15.4 3 14 3c-3 0-5 1.8-5 5.1V10H6v4h3v8z"/></svg></a>
+      <a href="https://www.facebook.com/share/16xbVeazJg/?mibextid=wwXIfr" aria-label="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M13 22v-8h3l.5-4H13V8.5c0-1.1.3-1.8 1.9-1.8H17V3.1C16.6 3 15.4 3 14 3c-3 0-5 1.8-5 5.1V10H6v4h3v8z"/></svg></a>
       <a href="https://twitter.com/cmstudios" aria-label="Twitter"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l4.5 6z"/></svg></a>
       <a href="https://youtube.com/cmstudios" aria-label="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23 7.5a4 4 0 0 0-2.8-2.8C18.2 4 12 4 12 4s-6.2 0-8.2.7A4 4 0 0 0 1 7.5 41.7 41.7 0 0 0 0 12a41.7 41.7 0 0 0 1 4.5 4 4 0 0 0 2.8 2.8C5.8 20 12 20 12 20s6.2 0 8.2-.7A4 4 0 0 0 23 16.5 41.7 41.7 0 0 0 24 12a41.7 41.7 0 0 0-1-4.5zM10 15.5v-7l6 3.5z"/></svg></a>
     </div>
@@ -130,15 +138,15 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // ✅ Fixed launch date countdown
     const countdownEl = document.getElementById("countdown");
-    const endDate = new Date();
-    endDate.setDate(endDate.getDate() + 15);
+    const endDate = new Date(2025, 8, 5, 0, 0, 0); // 5 Sept 2025, 00:00:00
 
     function updateCountdown(){
       const now = new Date();
       const diff = endDate - now;
       if(diff <= 0){
-        countdownEl.textContent = "We are live!";
+        countdownEl.innerHTML = "We are live!";
         return;
       }
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
