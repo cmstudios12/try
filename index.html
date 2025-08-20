@@ -85,8 +85,9 @@
 .slide img {
   width: 100%;
   height: 100%;
+  object-fit: fill;
   object-fit: cover;
-  filter: brightness(0.7);
+  filter: brightness(0.5);
   display: block;
 }
 
@@ -95,7 +96,7 @@
   bottom: 30px;
   left: 30px;
   color: #fff;
-  max-width: 60%;
+  max-width: 80%;
 }
 
 .slide-content h2 {
@@ -167,7 +168,7 @@
 #backToTop {
     position: fixed;
     bottom: 40px;
-    right: 40px;
+    left: 40px;
     width: 60px;
     height: 60px;
     background: rgba(255, 204, 0, 0.15); /* glassy yellow */
@@ -223,8 +224,8 @@
     .toggle-btn {
       position: fixed;
       bottom: 20px;
-      width: 60px;
-      height: 60px;
+      width: 65px;
+      height: 65px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -244,93 +245,56 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     }
 
-    .whatsapp-toggle {
-      right: 20px;
-      background: linear-gradient(135deg, #25d366, #128c7e);
-    }
+    #whatsapp-toggle {
+  position: fixed;
+  bottom: 100px;      /* distance from bottom */
+  right: 22px;       /* distance from right, next to Tawk.to */
+  z-index: 9999;
+  width: 65px;
+  height: 65px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
 
-    .chat-toggle {
-      right: 90px;
-      background: linear-gradient(135deg, #007bff, #0056b3);
-    }
+#whatsapp-toggle img {
+  width: 40px;
+  height: 40px;
+}
 
-    /* Chat window */
-    .chat-window {
-      position: fixed;
-      bottom: 100px;
-      right: 20px;
-      width: 320px;
-      height: 420px;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 16px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-      z-index: 1000;
-      backdrop-filter: blur(15px);
-      animation: slideUp 0.4s ease;
-    }
+#whatsapp-toggle:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+/* Tawk.to reposition */
+#tawkchat-container {
+  bottom: 20px !important;
+  right: 20px !important;
+}
+
+/* Mobile: stack vertically */
+@media(max-width: 768px){
+  #whatsapp-toggle {
+    bottom: 100px;
+    right: 20px;
+  }
+  #tawkchat-container {
+    bottom: 20px !important;
+    right: 20px !important;
+  }
+}
+    
 
     @keyframes slideUp {
       from { transform: translateY(50px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
 
-    .chat-header {
-      background: linear-gradient(135deg, #007bff, #00c6ff);
-      color: white;
-      padding: 12px;
-      text-align: center;
-      font-weight: bold;
-      letter-spacing: 0.5px;
-    }
-
-    .chat-body {
-      flex: 1;
-      padding: 12px;
-      overflow-y: auto;
-      font-size: 14px;
-      color: #333;
-    }
-
-    .chat-body p {
-      margin: 6px 0;
-    }
-
-    .chat-footer {
-      padding: 10px;
-      border-top: 1px solid #ddd;
-      display: flex;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-    }
-
-    .chat-footer input {
-      flex: 1;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      margin-right: 6px;
-      outline: none;
-      font-size: 14px;
-    }
-
-    .chat-footer button {
-      background: linear-gradient(135deg, #007bff, #0056b3);
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: 0.3s;
-    }
-
-    .chat-footer button:hover {
-      background: linear-gradient(135deg, #0056b3, #003d80);
-    }
-
+    
 
 .glass-card:hover{
   transform: translateY(-5px);
@@ -469,27 +433,15 @@
   </div>
 
   <!-- WhatsApp Toggle -->
-  <div class="toggle-btn whatsapp-toggle" 
-       onclick="window.open('https://wa.me/27818401398','_blank')">
-    <i class="fab fa-whatsapp"></i>
-  </div>
+  
 
-  <!-- AI Chat Toggle -->
-  <div class="toggle-btn chat-toggle" onclick="toggleChat()">
-    <i class="fas fa-robot"></i>
-  </div>
+  <a href="https://wa.me/27818401398" 
+   id="whatsapp-toggle"
+   target="_blank">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+</a>
 
-  <!-- Chat Window -->
-  <div class="chat-window" id="chatWindow">
-    <div class="chat-header">AI Assistant 🤖</div>
-    <div class="chat-body" id="chatBody">
-      <p><b>AI:</b> Hello 👋 How can I help you today?</p>
-    </div>
-    <div class="chat-footer">
-      <input type="text" id="userInput" placeholder="Type a message...">
-      <button onclick="sendMessage()">Send</button>
-    </div>
-  </div>
+ 
 
   </header>
 
@@ -613,9 +565,9 @@
     </div>
     <div class="footer-contact glass-card">
       <h4>Contact</h4>
+      <p><i class="fas fa-phone"></i> +27 72 430 7317</p>
       <p><i class="fas fa-phone"></i> +27 81 840 1398</p>
       <p><i class="fas fa-envelope"></i> info@cmstudio.co.za</p>
-      <p><i class="fas fa-envelope"></i> cmstudiosza@gmail.com</p>
       <p><i class="fas fa-map-marker-alt"></i>South Africa  |  Mbombela  |  Nkomazi</p>
     </div>
     <div class="footer-social glass-card">
@@ -690,31 +642,17 @@ dots.forEach((dot,index) => {
   dot.addEventListener('click',()=>goToSlide(index));
 });
 
-function toggleChat() {
-      const chat = document.getElementById("chatWindow");
-      chat.style.display = chat.style.display === "flex" ? "none" : "flex";
-    }
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+    var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68a60d1f727c171927b3529a/1j34a6h6g';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+})();
 
-    function sendMessage() {
-      const input = document.getElementById("userInput");
-      const chatBody = document.getElementById("chatBody");
-      if (input.value.trim() !== "") {
-        let userMsg = document.createElement("p");
-        userMsg.innerHTML = "<b>You:</b> " + input.value;
-        chatBody.appendChild(userMsg);
 
-        // Fake AI response (can be upgraded to real AI later)
-        setTimeout(() => {
-          let aiMsg = document.createElement("p");
-          aiMsg.innerHTML = "<b>AI:</b> I’m still learning 🤖 but I’ll do my best!";
-          chatBody.appendChild(aiMsg);
-          chatBody.scrollTop = chatBody.scrollHeight;
-        }, 700);
-
-        input.value = "";
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }
-    }
 
 const backToTopBtn = document.getElementById("backToTop");
 
