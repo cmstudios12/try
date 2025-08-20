@@ -651,7 +651,14 @@ dots.forEach((dot,index) => {
     s0.parentNode.insertBefore(s1,s0);
 })();
 
+// Check if user is logged in
+  if(localStorage.getItem('isLoggedIn') === 'true'){
+      // Show WhatsApp
+      document.getElementById('whatsapp-toggle').style.display = 'flex';
 
+      // Show Tawk.to script
+      document.getElementById('tawk-script').style.display = 'block';
+  }
 
 const backToTopBtn = document.getElementById("backToTop");
 
