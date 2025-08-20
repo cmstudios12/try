@@ -1,748 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8" />
-  <title>CMSTUDIOS | Creative Studio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CMSTUDIOS | Under Construction</title>
+  <meta name="description" content="CMSTUDIOS is crafting something fresh. We'll be live soon!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --navy: #001f3f;
-      --purple: #3c1361;
-      --white: #ffffff;
-      --yellow: #ffcc00;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-    body { background: var(--white); color: var(--navy); line-height:1.6; scroll-behavior:smooth; }
-
-    nav {
-      position: fixed; top:0; left:0; width:100%; background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(8px); z-index:1000; display:flex; justify-content:space-between; align-items:center; padding:15px 30px;
-    }
-    nav .logo img { height:60px; vertical-align:middle; }
-    nav ul { list-style:none; display:flex; gap:25px; }
-    nav ul li a {
-      color:var(--white); text-decoration:none; font-weight:500; position:relative;
-      padding-bottom:4px; transition:color 0.3s; cursor:pointer; display:inline-block; overflow:hidden; user-select:none;
-    }
-    nav ul li a::after {
-      content:''; position:absolute; left:0; bottom:0; width:0; height:2px; background:var(--yellow); transition:width 0.3s;
-    }
-    nav ul li a:hover::after { width:100%; }
-    nav ul li a:hover { color: var(--yellow); }
-
-    .menu-toggle { display:none; font-size:1.5rem; color:var(--white); cursor:pointer; position:relative; overflow:hidden; user-select:none; }
-    @media(max-width:768px) {
-      nav ul { display:none; flex-direction:column; background:var(--navy); position:absolute; top:60px; right:0; width:200px; padding:20px; border-radius:0 0 0 10px; }
-      nav ul.show { display:flex; }
-      .menu-toggle { display:block; }
+    :root{
+      --bg1: 255, 120, 230;   /* pink */
+      --bg2: 110, 180, 255;   /* blue */
+      --bg3: 120, 255, 210;   /* mint */
+      --txt: 245, 247, 255;
+      --glass-stroke: rgba(255,255,255,.35);
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 28px;
     }
 
-    header { background:linear-gradient(135deg,#0f2027,#203a43,#2c5364); color:var(--white); padding:100px 20px 60px; text-align:center; margin-top:60px; }
-    header h1 { font-size:2.5rem; }
-    header p { font-size:1.2rem; margin:10px 0 20px; }
-
-    .logout-icon { color:var(--white); font-size:1.3rem; cursor:pointer; margin-left:15px; transition:color 0.3s; display:none; }
-    .logout-icon:hover { color: var(--yellow); }
-
-    .btn { background:var(--yellow); color:var(--navy); padding:12px 24px; text-decoration:none; border-radius:30px; font-weight:bold; transition:background 0.3s; display:inline-block; position:relative; overflow:hidden; cursor:pointer; user-select:none; }
-    .btn:hover { background:#9e9e9e; }
-
- #hero {
-  width: 100vw;
-  height: 600px;
-  position: fixed;
-  overflow: hidden;
-  background: #0f2027;
-}
-
-.hero-container {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-}
-
-.slider-wrapper {
-  position: relative;
-  height: 100%;
-}
-
-.slider {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  transition: transform 0.6s ease-in-out;
-}
-
-.slide {
-  flex: 0 0 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-  object-fit: cover;
-  filter: brightness(0.5);
-  display: block;
-}
-
-.slide-content {
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  color: #fff;
-  max-width: 80%;
-}
-
-.slide-content h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.slide-content p {
-  font-size: 1.1rem;
-  line-height: 1.5;
-}
-
-.dots {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  background: rgba(255,255,255,0.5);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.dot.active {
-  background: var(--yellow);
-}
-
-
-
-    section { padding:60px 20px; max-width:1000px; margin:auto; flex-wrap: wrap;}
-    .services, .projects, .why-us { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; margin-top:20px; }
-    .card { background:#f5f5f5; padding:20px; border-radius:15px; transition:transform 0.3s; text-align:center; cursor:pointer; }
-    .card:hover { transform:translateY(-5px); }
-    .card i { font-size:2rem; margin-bottom:10px; color:#0f2027; }
-
-    form { background:#f9f9f9; padding:30px; border-radius:10px; display:grid; gap:15px; }
-    form input, form textarea { width:100%; padding:12px; border:1px solid #ccc; border-radius:8px; }
-
-    footer{
-  background: rgba(0, 0, 0, 0.6);
-  color: var(--white);
-  padding: 50px 20px 20px;
-  font-family: 'Poppins', sans-serif;
-  backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(0, 9, 51, 0.2);
-}
-.footer-container{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap:30px;
-  max-width:1200px;
-  margin:auto;
-}
-.glass-card{
-  background: rgba(6, 0, 61, 0.05);
-  border-radius: 15px;
-  padding: 20px;
-  backdrop-filter: blur(8px);
-  transition: transform 0.3s, background 0.3s;
-}
-
-#backToTop {
-    position: fixed;
-    bottom: 40px;
-    left: 40px;
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 204, 0, 0.15); /* glassy yellow */
-    border: 2px solid rgba(255, 204, 0, 0.4);
-    border-radius: 50%;
-    backdrop-filter: blur(10px);
-    color: #001f3f; /* navy */
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 9999;
-    opacity: 0;
-    pointer-events: none;
-    box-shadow: 0 8px 20px rgba(0,31,63,0.3), 0 0 15px rgba(255,204,0,0.4);
-    transition: all 0.4s ease, transform 0.3s ease, opacity 0.4s ease;
-  }
-
-  /* Show when scrolling */
-  #backToTop.show {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0) scale(1);
-  }
-
-  /* Hover effect */
-  #backToTop:hover {
-    background: rgba(255, 204, 0, 0.35);
-    transform: translateY(-5px) scale(1.15);
-    box-shadow: 0 0 25px rgba(255,204,0,0.8), 0 0 30px rgba(0,31,63,0.5);
-    color: #001f3f;
-  }
-
-  /* Floating animation */
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
-
-  #backToTop i {
-    animation: float 2s infinite ease-in-out;
-  }
-
-  body {
-      font-family: "Poppins", sans-serif;
-      background: #f4f7fb;
-      margin: 0;
-      padding: 0;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Poppins, sans-serif;
+      color: rgba(var(--txt), .95);
+      background: radial-gradient(1200px 900px at 10% 10%, rgba(var(--bg1),.35), transparent 60%),
+                  radial-gradient(1400px 1000px at 90% 20%, rgba(var(--bg2),.35), transparent 60%),
+                  radial-gradient(1200px 900px at 50% 90%, rgba(var(--bg3),.35), transparent 60%),
+                  #0b0f17;
+      overflow-x:hidden;
     }
 
-    /* Floating buttons */
-    .toggle-btn {
-      position: fixed;
-      bottom: 20px;
-      width: 65px;
-      height: 65px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      transition: all 0.3s ease;
+    .orb{position:absolute; border-radius:999px; filter: blur(30px); opacity:.6; mix-blend-mode: screen; animation: float 15s ease-in-out infinite;}
+    .orb.one{ width:380px; height:380px; left:-80px; top:-60px; background: linear-gradient(140deg, rgba(var(--bg1),.9), rgba(var(--bg2),.6)); animation-duration:18s; }
+    .orb.two{ width:300px; height:300px; right:-60px; top:20%; background: linear-gradient(140deg, rgba(var(--bg2),.9), rgba(var(--bg3),.6)); animation-duration:22s; }
+    .orb.three{ width:280px; height:280px; left:10%; bottom:-80px; background: linear-gradient(140deg, rgba(var(--bg3),.9), rgba(var(--bg1),.6)); animation-duration:19s; }
+    @keyframes float{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-18px) } }
+
+    .wrap{ min-height:100%; display:grid; place-items:center; padding:48px 20px; position:relative; }
+
+    .card{
+      width:min(900px, 92vw);
+      background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
+      border: 1px solid var(--glass-stroke);
+      border-radius: var(--radius);
+      backdrop-filter: blur(14px) saturate(130%);
+      -webkit-backdrop-filter: blur(14px) saturate(130%);
+      box-shadow: var(--shadow);
+      position:relative; overflow:hidden;
     }
 
-    .toggle-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    }
+    .inner{ padding: clamp(28px, 6vw, 56px); text-align:center; position:relative; z-index:1; }
 
-    #whatsapp-toggle {
-  position: fixed;
-  bottom: 100px;      /* distance from bottom */
-  right: 22px;       /* distance from right, next to Tawk.to */
-  z-index: 9999;
-  width: 65px;
-  height: 65px;
-  background: linear-gradient(135deg, #25D366, #128C7E);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+    .logo{display:inline-grid; place-items:center; width:84px; height:84px; border-radius:20px; background: linear-gradient(135deg, rgba(var(--bg2),.9), rgba(var(--bg1),.8)); box-shadow: 0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.35); margin: 0 auto 18px;}
+    .logo span{ font-weight:800; letter-spacing:.5px; font-size:26px; color:white; text-shadow:0 2px 12px rgba(0,0,0,.25) }
 
-#whatsapp-toggle img {
-  width: 40px;
-  height: 40px;
-}
+    h1{ margin:10px 0 8px; font-size: clamp(28px, 4.5vw, 52px); line-height:1.08 }
+    .tag{ margin:0 auto 14px; font-weight:600; letter-spacing:.4px; opacity:.9; font-size: clamp(14px, 1.7vw, 18px) }
+    .desc{ max-width: 60ch; margin: 12px auto 26px; opacity:.9; font-weight:300; line-height:1.7 }
 
-#whatsapp-toggle:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-/* Tawk.to reposition */
-#tawkchat-container {
-  bottom: 20px !important;
-  right: 20px !important;
-}
+    .countdown {font-size: 20px; font-weight:600; margin: 20px 0; display:flex; gap:18px; justify-content:center;}
+    .time-box{ background: rgba(255,255,255,.12); padding:10px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.3); }
+    .time-box span{ display:block; font-size:14px; opacity:.8; margin-top:4px; }
 
-/* Mobile: stack vertically */
-@media(max-width: 768px){
-  #whatsapp-toggle {
-    bottom: 100px;
-    right: 20px;
-  }
-  #tawkchat-container {
-    bottom: 20px !important;
-    right: 20px !important;
-  }
-}
-    
+    .btn{ cursor:pointer; border:none; padding: 14px 18px; font-weight:600; letter-spacing:.3px; border-radius:14px; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+    .btn.primary{ color:#0b0f17; background: linear-gradient(135deg, rgba(var(--bg3),1), rgba(var(--bg2),.95)); box-shadow:0 14px 30px rgba(0,0,0,.25) }
+    .btn.primary:hover{ transform: translateY(-2px) }
+    .btn.ghost{ color:rgba(var(--txt), .95); background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.35) }
+    .btn.ghost:hover{ transform: translateY(-1px) }
 
-    @keyframes slideUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+    .icons{ display:flex; gap:12px; justify-content:center; margin-top: 24px }
+    .icons a{ display:grid; place-items:center; width:42px; height:42px; border-radius:12px; border:1px solid rgba(255,255,255,.35); background: rgba(255,255,255,.10); text-decoration:none; transition: transform .2s ease }
+    .icons a:hover{ transform: translateY(-2px) }
 
-    
-
-.glass-card:hover{
-  transform: translateY(-5px);
-  background: rgba(12, 0, 56, 0.1);
-}
-.footer-about h3, .footer-links h4, .footer-contact h4, .footer-social h4{
-  margin-bottom: 15px;
-  color: var(--yellow);
-}
-.footer-about p{
-  line-height:1.5;
-  font-size:0.95rem;
-}
-.footer-links ul{
-  list-style:none;
-}
-.footer-links ul li{
-  margin-bottom:10px;
-}
-.footer-links ul li a{
-  color: var(--white);
-  text-decoration:none;
-  transition:0.3s;
-}
-.footer-links ul li a:hover{
-  color: var(--yellow);
-}
-.footer-contact p, .footer-social .socials a{
-  margin-bottom:10px;
-  font-size:0.95rem;
-}
-.footer-social .socials a{
-  display:inline-block;
-  margin-right:10px;
-  color: var(--yellow);
-  font-size:1.2rem;
-  transition:0.3s;
-}
-.footer-social .socials a:hover{
-  color:#fff;
-}
-.footer-bottom{
-  text-align:center;
-  margin-top:30px;
-  font-size:0.85rem;
-}
-.footer-bottom a{
-  color: var(--yellow);
-  text-decoration:none;
-}
-.footer-bottom a:hover{
-  color:#fff;
-}
-@media(max-width:768px){
-  .footer-container{
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-  }
-}
-@media(max-width:480px){
-  .footer-container{
-    grid-template-columns:1fr;
-  }
-}
-
-    @media(max-width:600px) { header h1 { font-size:2rem; } .btn { padding:10px 20px; } }
-
-    .bubble { position:absolute; border-radius:50%; background:rgba(255,204,0,0.7); animation:bubble-float 0.8s ease-out forwards; pointer-events:none; z-index:10; mix-blend-mode:screen; }
-    @keyframes bubble-float { 0%{ transform:scale(0.5); opacity:0.8; } 100%{ transform:translateY(-80px) scale(2); opacity:0; } }
-
-    .modal { display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color: rgba(0,0,0,0.6); justify-content:center; align-items:center; }
-    .modal-content { background-color:var(--navy); color:var(--white); padding:30px; border-radius:12px; text-align:center; max-width:400px; width:90%; animation:fadeIn 0.3s ease; }
-    .modal-buttons { margin-top:20px; display:flex; justify-content:space-around; gap:10px; }
-    @keyframes fadeIn { from{transform:scale(0.8); opacity:0;} to{transform:scale(1); opacity:1;} }
+    footer{ text-align:center; opacity:.7; font-size:13px; padding: 22px 10px 0 }
   </style>
-  <!-- Font Awesome for icons -->
-  <script src="https://kit.fontawesome.com/2d3d5a2d3b.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <div class="wrap">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">
-       <img src="cmstudio.png" alt="CMSTUDIOS Logo">
-    </div>
-    <div class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('show')">
-      <i class="fas fa-bars"></i>
-    </div>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#home">Track Project</a></li>
-      <li><a href="#why">Why Us</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div id="logoutIcon" class="logout-icon" onclick="logoutUser()">
-      <i class="fas fa-right-from-bracket"></i>
-    </div>
-  </nav>
+    <section class="card">
+      <div class="inner">
+        <div class="logo"><span>CM</span></div>
+        <div class="tag">CREATIVE MEDIA STUDIOS</div>
+        <h1>We’re building something <em>fresh</em> ✦</h1>
+        <p class="desc">CMSTUDIOS is currently under construction. Our new experience will land soon. In the meantime, you can reach us or get notified the moment we launch.</p>
 
-  <!-- Logout Modal -->
-  <div id="logoutModal" class="modal">
-    <div class="modal-content">
-      <p>Are you sure you want to log out?</p>
-      <div class="modal-buttons">
-        <button id="confirmLogout" class="btn">Yes, Logout</button>
-        <button id="cancelLogout" class="btn" style="background: transparent; color: white; border: 1px solid white;">Cancel</button>
-      </div>
-    </div>
-  </div>
-
-  <button id="backToTop" title="Go to Top">
-  <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- Hero Section -->
-  <header>
-    
-  <div class="hero-container">
-    <div class="slider-wrapper">
-      <div class="slider">
-        <div class="slide">
-          <img src="pic.jpg" alt="Graphic Design">
-          <div class="slide-content">
-            <h2>Graphic Design</h2>
-            <p>Creative visual designs for logos, branding, and marketing material.</p>
-          </div>
+        <div class="countdown" id="countdown">
+          <div class="time-box"><div id="days">0</div><span>Days</span></div>
+          <div class="time-box"><div id="hours">0</div><span>Hours</span></div>
+          <div class="time-box"><div id="minutes">0</div><span>Minutes</span></div>
+          <div class="time-box"><div id="seconds">0</div><span>Seconds</span></div>
         </div>
+
+        <div class="cta-row">
+          <a class="btn primary" href="mailto:info@cmstudios.com?subject=Notify%20me%20when%20CMSTUDIOS%20launches">Notify me</a>
+          <a class="btn ghost" href="#" onclick="copyEmail(); return false;">Copy email</a>
         </div>
+
+        <div class="icons">
+          <a href="https://instagram.com/cmstudios" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6.8a1.2 1.2 0 1 1-1.2 1.2A1.2 1.2 0 0 1 18 6.8z"/></svg></a>
+          <a href="https://facebook.com/cmstudios" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M13 22v-8h3l.5-4H13V8.5c0-1.1.3-1.8 1.9-1.8H17V3.1C16.6 3 15.4 3 14 3c-3 0-5 1.8-5 5.1V10H6v4h3v8z"/></svg></a>
+          <a href="https://twitter.com/cmstudios" title="X/Twitter" aria-label="Twitter"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l4.5 6z"/></svg></a>
+          <a href="https://youtube.com/cmstudios" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M23 7.5a4 4 0 0 0-2.8-2.8C18.2 4 12 4 12 4s-6.2 0-8.2.7A4 4 0 0 0 1 7.5 41.7 41.7 0 0 0 0 12a41.7 41.7 0 0 0 1 4.5 4 4 0 0 0 2.8 2.8C5.8 20 12 20 12 20s6.2 0 8.2-.7A4 4 0 0 0 23 16.5 41.7 41.7 0 0 0 24 12a41.7 41.7 0 0 0-1-4.5zM10 15.5v-7l6 3.5z"/></svg></a>
+        </div>
+
+        <footer>© <span id="year"></span> CMSTUDIOS · All rights reserved</footer>
       </div>
-      <div class="drag-circle" id="dragCircle">Drag</div>
-      <div class="dots">
-        <span class="dot active"></span>
-      </div>
-    </div>
+    </section>
   </div>
-
-  <!-- WhatsApp Toggle -->
-  
-
-  <a href="https://wa.me/27818401398" 
-   id="whatsapp-toggle"
-   target="_blank">
-   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
-</a>
-
- 
-
-  </header>
-
-  <!-- About Section -->
-  <section id="about">
-    <h2>About CMSTUDIOS</h2>
-    <p>CMSTUDIOS is a creative digital studio specializing in graphic design, photography, videography, marketing, and branding. We help businesses and creators shine with visually striking content and innovative strategies.</p>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services">
-    <h2>Our Creative Services</h2>
-    <div class="services">
-      <div class="card">
-        <i class="fas fa-pencil-ruler"></i>
-        <h3>Graphic Design</h3>
-        <p>Stunning visuals for brands, social media, and marketing materials that captivate your audience.</p>
-        <a href="graphic.html" class="btn" onclick="checkLogin(event,'Graphic Design')">Enquire</a>
-      </div>
-      <div class="card">
-        <i class="fas fa-camera-retro"></i>
-        <h3>Photography</h3>
-        <p>Professional photoshoots for events, products, and personal branding that tell your story.</p>
-        <a href="photography.html" class="btn" onclick="checkLogin(event,'Photography')">Book a Shoot</a>
-      </div>
-      <div class="card">
-        <i class="fas fa-video"></i>
-        <h3>Videography</h3>
-        <p>High-quality video production for ads, promos, events, and social media campaigns.</p>
-        <a href="videography.html" class="btn" onclick="checkLogin(event,'Videography')">Get a Quote</a>
-      </div>
-      <div class="card">
-        <i class="fas fa-bullhorn"></i>
-        <h3>Marketing</h3>
-        <p>Creative marketing strategies to boost your brand visibility and engagement online.</p>
-        <a href="marketing.html" class="btn" onclick="checkLogin(event,'Marketing')">Start Marketing</a>
-      </div>
-      <div class="card">
-        <i class="fas fa-lightbulb"></i>
-        <h3>Branding</h3>
-        <p>Build a strong, memorable brand identity that resonates with your audience.</p>
-        <a href="branding.html" class="btn" onclick="checkLogin(event,'Branding')">Build Your Brand</a>
-      </div>
-      <div class="card">
-        <i class="fas fa-tools"></i>
-        <h3>Tech Services</h3>
-        <p>Repair and troubleshoot phones, laptops, and other devices – hardware and software solutions.</p>
-        <a href="tech.html" class="btn" onclick="checkLogin(event,'Branding')">Book a Repair</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Featured Projects</h2>
-    <div class="projects">
-      <div class="card" data-title="Branding Campaign" data-desc="Complete branding and visual identity for a modern startup." data-img="project1.jpg">
-        <h3>Branding Campaign</h3>
-        <p>Click to view details</p>
-      </div>
-      <div class="card" data-title="Photography Portfolio" data-desc="A gallery of professional photoshoots capturing products and events." data-img="project2.jpg">
-        <h3>Photography Portfolio</h3>
-        <p>Click to view details</p>
-      </div>
-      <div class="card" data-title="Video Production" data-desc="Promo videos and marketing clips tailored for social media and websites." data-img="project3.jpg">
-        <h3>Video Production</h3>
-        <p>Click to view details</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Project Modal -->
-  <div id="projectModal" class="modal">
-    <div class="modal-content">
-      <span id="closeProjectModal" style="cursor:pointer; float:right; font-size:1.5rem;">&times;</span>
-      <h3 id="modalTitle"></h3>
-      <img id="modalImg" src="" alt="" style="width:100%; margin:15px 0; border-radius:10px;">
-      <p id="modalDesc"></p>
-    </div>
-  </div>
-
-  <!-- Why Us Section -->
-  <section id="why">
-    <h2>Why Choose CMSTUDIOS</h2>
-    <div class="why-us">
-      <div class="card"><i class="fas fa-bolt"></i><h3>Fast Turnaround</h3><p>We deliver high-quality creative content on time, every time.</p></div>
-      <div class="card"><i class="fas fa-magic"></i><h3>Creative Excellence</h3><p>Our designs, videos, and campaigns stand out and leave lasting impressions.</p></div>
-      <div class="card"><i class="fas fa-users"></i><h3>Client Focused</h3><p>We listen, understand, and tailor our services to meet your goals.</p></div>
-      <div class="card"><i class="fas fa-headset"></i><h3>Ongoing Support</h3><p>We support your projects even after delivery to ensure your success.</p></div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <form action="mailto:youremail@example.com" method="POST" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="text" name="subject" placeholder="Service Needed" required>
-      <textarea name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
-      <button type="submit" class="btn">Send Enquiry</button>
-    </form>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-  <div class="footer-container">
-    <div class="footer-about glass-card">
-      <h3>CMSTUDIOS</h3>
-      <p>We are a creative digital studio offering graphic design, photography, videography, and tech solutions. Helping your brand shine online!</p>
-    </div>
-    <div class="footer-links glass-card">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#projects">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="tracking.html">Track Project</a></li>
-      </ul>
-    </div>
-    <div class="footer-contact glass-card">
-      <h4>Contact</h4>
-      <p><i class="fas fa-phone"></i> +27 81 840 1398</p>
-      <p><i class="fas fa-envelope"></i> cmstudiosza@gmail.com</p>
-      <p><i class="fas fa-map-marker-alt"></i>South Africa  |  Mbombela  |  Nkomazi</p>
-    </div>
-    <div class="footer-social glass-card">
-      <h4>Follow Us</h4>
-      <div class="socials">
-        <a href="https://facebook.com/cmstudiomedia" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://instagram.com/n.t.a.n.d.o.e" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://tiktok.com/@n.t.a.n.d.o0" target="_blank"><i class="fab fa-tiktok"></i></a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom glass-card">
-    <p>&copy; 2025 CMSTUDIOS. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
-  </div>
-</footer>
 
   <script>
-    // Show logout if logged in
-    const logoutIcon = document.getElementById('logoutIcon');
-    const loggedInUser = localStorage.getItem("loggedInUser");
-    if(loggedInUser){ logoutIcon.style.display = 'block'; }
+    const EMAIL = "info@cmstudios.com";
 
-    // Bubble effect
-    const bubbleElements = [
-      ...document.querySelectorAll('nav ul li a'),
-      document.querySelector('.menu-toggle'),
-      ...document.querySelectorAll('.btn')
-    ];
-    bubbleElements.forEach(el=>{
-      el.addEventListener('click', e=>{
-        const rect = el.getBoundingClientRect();
-        const count = Math.floor(Math.random()*3)+4;
-        for(let i=0;i<count;i++){
-          const bubble=document.createElement('span');
-          bubble.classList.add('bubble');
-          const size=Math.floor(Math.random()*15)+15;
-          bubble.style.width=size+'px'; bubble.style.height=size+'px';
-          const offsetX=e.clientX-rect.left-size/2+(Math.random()*30-15);
-          const offsetY=e.clientY-rect.top-size/2+(Math.random()*30-15);
-          bubble.style.left=offsetX+'px'; bubble.style.top=offsetY+'px';
-          el.appendChild(bubble); setTimeout(()=>bubble.remove(),800);
+    function copyEmail(){
+      navigator.clipboard.writeText(EMAIL).then(()=>{
+        const btns = document.getElementsByClassName('btn ghost');
+        if(btns[0]){
+          const old = btns[0].textContent;
+          btns[0].textContent = 'Email copied';
+          setTimeout(()=> btns[0].textContent = old, 1600);
         }
       });
-    });
-
-    // Logout modal
-    function logoutUser(){ document.getElementById('logoutModal').style.display='flex'; }
-    document.getElementById('confirmLogout').addEventListener('click',()=>{
-      localStorage.removeItem("loggedInUser");
-      alert("You have been logged out.");
-      window.location.href="login.html";
-    });
-    document.getElementById('cancelLogout').addEventListener('click',()=>{ document.getElementById('logoutModal').style.display='none'; });
-    window.addEventListener('click', e=>{ if(e.target===document.getElementById('logoutModal')) document.getElementById('logoutModal').style.display='none'; });
-
-    const slider = document.querySelector('.slider');
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.dot');
-const dragCircle = document.getElementById('dragCircle');
-let currentIndex = 0;
-
-function goToSlide(index){
-  if(index < 0) index = slides.length - 1;
-  if(index >= slides.length) index = 0;
-  currentIndex = index;
-  slider.style.transform = `translateX(-${index*100}%)`;
-  dots.forEach(dot => dot.classList.remove('active'));
-  dots[currentIndex].classList.add('active');
-}
-
-dots.forEach((dot,index) => {
-  dot.addEventListener('click',()=>goToSlide(index));
-});
-
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-    var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/68a60d1f727c171927b3529a/1j34a6h6g';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-})();
-
-// Check if user is logged in
-  if(localStorage.getItem('isLoggedIn') === 'true'){
-      // Show WhatsApp
-      document.getElementById('whatsapp-toggle').style.display = 'flex';
-
-      // Show Tawk.to script
-      document.getElementById('tawk-script').style.display = 'block';
-  }
-
-const backToTopBtn = document.getElementById("backToTop");
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      backToTopBtn.classList.add("show");
-    } else {
-      backToTopBtn.classList.remove("show");
     }
-  });
 
-  backToTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-// Drag functionality
-let isDragging = false;
-let startX = 0;
+    // countdown 15 days from now
+    const countdownEl = document.getElementById("countdown");
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + 15);
 
-dragCircle.addEventListener('mousedown', e=>{
-  isDragging = true;
-  startX = e.clientX;
-});
-window.addEventListener('mouseup', e=>{
-  if(!isDragging) return;
-  isDragging = false;
-  const diff = e.clientX - startX;
-  if(diff > 50) goToSlide(currentIndex -1);
-  else if(diff < -50) goToSlide(currentIndex +1);
-});
-window.addEventListener('mousemove', e=>{
-  if(!isDragging) return;
-  // optional: small circle movement animation
-  const diff = e.clientX - startX;
-  dragCircle.style.transform = `translate(calc(-50% + ${diff/5}px), -50%)`;
-});
-window.addEventListener('mouseleave', e=>{
-  if(isDragging){
-    isDragging = false;
-    dragCircle.style.transform = `translate(-50%, -50%)`;
-  }
-});
-window.addEventListener('mouseup', e=>{
-  dragCircle.style.transform = `translate(-50%, -50%)`;
-});
+    function updateCountdown(){
+      const now = new Date();
+      const diff = endDate - now;
 
-    // Service login check
-    function checkLogin(e, serviceName){
-      const user = localStorage.getItem("loggedInUser");
-      if(!user){
-        e.preventDefault();
-        alert("Please log in to continue with your enquiry or booking.");
-        window.location.href="login.html";
-      } else {
-        const subjectField=document.querySelector('form input[name="subject"]');
-        if(subjectField) subjectField.value=serviceName;
+      if(diff <= 0){
+        countdownEl.textContent = "We are live!";
+        return;
       }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
     }
 
-    const email = localStorage.getItem('loggedInUserEmail'); // or whatever key you use
-    const name = localStorage.getItem('loggedInUserName');
-    const phone = localStorage.getItem('loggedInUserPhone');
-
-
-
-    // Project modal
-    const projectCards=document.querySelectorAll('.projects .card');
-    const projectModal=document.getElementById('projectModal');
-    const modalTitle=document.getElementById('modalTitle');
-    const modalImg=document.getElementById('modalImg');
-    const modalDesc=document.getElementById('modalDesc');
-    const closeProjectModal=document.getElementById('closeProjectModal');
-
-    projectCards.forEach(card=>{
-      card.addEventListener('click',()=>{
-        modalTitle.textContent=card.dataset.title;
-        modalDesc.textContent=card.dataset.desc;
-        modalImg.src=card.dataset.img;
-        projectModal.style.display='flex';
-      });
-    });
-    closeProjectModal.addEventListener('click',()=>{ projectModal.style.display='none'; });
-    window.addEventListener('click', e=>{ if(e.target===projectModal) projectModal.style.display='none'; });
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
   </script>
-
 </body>
 </html>
