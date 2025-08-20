@@ -10,112 +10,113 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg1: 255, 120, 230;   /* pink */
-      --bg2: 110, 180, 255;   /* blue */
-      --bg3: 120, 255, 210;   /* mint */
+      --bg1: 255, 120, 230;
+      --bg2: 110, 180, 255;
+      --bg3: 120, 255, 210;
       --txt: 245, 247, 255;
       --glass-stroke: rgba(255,255,255,.35);
       --shadow: 0 20px 60px rgba(0,0,0,.35);
       --radius: 28px;
     }
 
-    *{box-sizing:border-box}
+    *{box-sizing:border-box; margin:0; padding:0}
     html,body{height:100%}
     body{
-      margin:0; font-family:Poppins, sans-serif;
+      font-family:Poppins, sans-serif;
       color: rgba(var(--txt), .95);
       background: radial-gradient(1200px 900px at 10% 10%, rgba(var(--bg1),.35), transparent 60%),
                   radial-gradient(1400px 1000px at 90% 20%, rgba(var(--bg2),.35), transparent 60%),
                   radial-gradient(1200px 900px at 50% 90%, rgba(var(--bg3),.35), transparent 60%),
                   #0b0f17;
       overflow-x:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
     }
 
     .orb{position:absolute; border-radius:999px; filter: blur(30px); opacity:.6; mix-blend-mode: screen; animation: float 15s ease-in-out infinite;}
-    .orb.one{ width:380px; height:380px; left:-80px; top:-60px; background: linear-gradient(140deg, rgba(var(--bg1),.9), rgba(var(--bg2),.6)); animation-duration:18s; }
-    .orb.two{ width:300px; height:300px; right:-60px; top:20%; background: linear-gradient(140deg, rgba(var(--bg2),.9), rgba(var(--bg3),.6)); animation-duration:22s; }
-    .orb.three{ width:280px; height:280px; left:10%; bottom:-80px; background: linear-gradient(140deg, rgba(var(--bg3),.9), rgba(var(--bg1),.6)); animation-duration:19s; }
+    .orb.one{ width:300px; height:300px; left:-80px; top:-60px; background: linear-gradient(140deg, rgba(var(--bg1),.9), rgba(var(--bg2),.6)); animation-duration:18s; }
+    .orb.two{ width:220px; height:220px; right:-60px; top:20%; background: linear-gradient(140deg, rgba(var(--bg2),.9), rgba(var(--bg3),.6)); animation-duration:22s; }
+    .orb.three{ width:200px; height:200px; left:10%; bottom:-80px; background: linear-gradient(140deg, rgba(var(--bg3),.9), rgba(var(--bg1),.6)); animation-duration:19s; }
     @keyframes float{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-18px) } }
 
-    .wrap{ min-height:100%; display:grid; place-items:center; padding:48px 20px; position:relative; }
-
     .card{
-      width:min(900px, 92vw);
+      width:min(95%, 900px);
       background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.08));
       border: 1px solid var(--glass-stroke);
       border-radius: var(--radius);
       backdrop-filter: blur(14px) saturate(130%);
       -webkit-backdrop-filter: blur(14px) saturate(130%);
       box-shadow: var(--shadow);
-      position:relative; overflow:hidden;
+      overflow:hidden;
+      padding: clamp(20px, 5vw, 56px);
+      z-index:1;
     }
 
-    .inner{ padding: clamp(28px, 6vw, 56px); text-align:center; position:relative; z-index:1; }
+    .logo{display:inline-grid; place-items:center; width:70px; height:70px; border-radius:20px; background: linear-gradient(135deg, rgba(var(--bg2),.9), rgba(var(--bg1),.8)); box-shadow: 0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.35); margin: 0 auto 18px;}
+    .logo span{ font-weight:800; letter-spacing:.5px; font-size:22px; color:white; text-shadow:0 2px 12px rgba(0,0,0,.25) }
 
-    .logo{display:inline-grid; place-items:center; width:84px; height:84px; border-radius:20px; background: linear-gradient(135deg, rgba(var(--bg2),.9), rgba(var(--bg1),.8)); box-shadow: 0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.35); margin: 0 auto 18px;}
-    .logo span{ font-weight:800; letter-spacing:.5px; font-size:26px; color:white; text-shadow:0 2px 12px rgba(0,0,0,.25) }
+    h1{ font-size: clamp(24px, 5vw, 42px); line-height:1.2; margin:10px 0; }
+    .tag{ font-size: clamp(12px, 3vw, 16px); margin-bottom:12px; font-weight:600; }
+    .desc{ font-size: clamp(14px, 4vw, 18px); margin: 10px auto 20px; line-height:1.6; max-width:90%; }
 
-    h1{ margin:10px 0 8px; font-size: clamp(28px, 4.5vw, 52px); line-height:1.08 }
-    .tag{ margin:0 auto 14px; font-weight:600; letter-spacing:.4px; opacity:.9; font-size: clamp(14px, 1.7vw, 18px) }
-    .desc{ max-width: 60ch; margin: 12px auto 26px; opacity:.9; font-weight:300; line-height:1.7 }
+    .countdown {font-size: clamp(16px, 5vw, 22px); font-weight:600; margin: 20px 0; display:flex; gap:10px; flex-wrap:wrap; justify-content:center;}
+    .time-box{ background: rgba(255,255,255,.12); padding:8px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.3); min-width:60px; }
+    .time-box div{ font-size: clamp(16px, 6vw, 28px); font-weight:700; }
+    .time-box span{ display:block; font-size:clamp(12px, 3vw, 14px); opacity:.8; margin-top:2px; }
 
-    .countdown {font-size: 20px; font-weight:600; margin: 20px 0; display:flex; gap:18px; justify-content:center;}
-    .time-box{ background: rgba(255,255,255,.12); padding:10px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.3); }
-    .time-box span{ display:block; font-size:14px; opacity:.8; margin-top:4px; }
-
-    .btn{ cursor:pointer; border:none; padding: 14px 18px; font-weight:600; letter-spacing:.3px; border-radius:14px; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
-    .btn.primary{ color:#0b0f17; background: linear-gradient(135deg, rgba(var(--bg3),1), rgba(var(--bg2),.95)); box-shadow:0 14px 30px rgba(0,0,0,.25) }
+    .btn{ cursor:pointer; border:none; padding: 12px 16px; font-weight:600; border-radius:12px; transition: transform .2s ease; font-size:clamp(14px,4vw,16px); margin:5px; display:inline-block; }
+    .btn.primary{ color:#0b0f17; background: linear-gradient(135deg, rgba(var(--bg3),1), rgba(var(--bg2),.95)); box-shadow:0 8px 20px rgba(0,0,0,.25) }
     .btn.primary:hover{ transform: translateY(-2px) }
     .btn.ghost{ color:rgba(var(--txt), .95); background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.35) }
     .btn.ghost:hover{ transform: translateY(-1px) }
 
-    .icons{ display:flex; gap:12px; justify-content:center; margin-top: 24px }
-    .icons a{ display:grid; place-items:center; width:42px; height:42px; border-radius:12px; border:1px solid rgba(255,255,255,.35); background: rgba(255,255,255,.10); text-decoration:none; transition: transform .2s ease }
+    .icons{ display:flex; gap:10px; justify-content:center; margin-top:18px; flex-wrap:wrap; }
+    .icons a{ display:grid; place-items:center; width:38px; height:38px; border-radius:10px; border:1px solid rgba(255,255,255,.35); background: rgba(255,255,255,.10); transition: transform .2s ease }
     .icons a:hover{ transform: translateY(-2px) }
 
-    footer{ text-align:center; opacity:.7; font-size:13px; padding: 22px 10px 0 }
+    footer{ font-size:12px; opacity:.7; margin-top:20px; }
+
+    @media(max-width:480px){
+      .logo{width:60px; height:60px}
+      .logo span{font-size:20px}
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="orb one"></div>
-    <div class="orb two"></div>
-    <div class="orb three"></div>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
 
-    <section class="card">
-      <div class="inner">
-        <div class="logo"><span>CM</span></div>
-        <div class="tag">CREATIVE MEDIA STUDIOS</div>
-        <h1>We’re building something <em>fresh</em> ✦</h1>
-        <p class="desc">CMSTUDIOS is currently under construction. Our new experience will land soon. In the meantime, you can reach us or get notified the moment we launch.</p>
+  <section class="card">
+    <div class="logo"><span>CM</span></div>
+    <div class="tag">CREATIVE MEDIA STUDIOS</div>
+    <h1>We’re building something <em>fresh</em> ✦</h1>
+    <p class="desc">CMSTUDIOS is currently under construction. Our new experience will land soon. In the meantime, you can reach us or get notified the moment we launch.</p>
 
-        <div class="countdown" id="countdown">
-          <div class="time-box"><div id="days">0</div><span>Days</span></div>
-          <div class="time-box"><div id="hours">0</div><span>Hours</span></div>
-          <div class="time-box"><div id="minutes">0</div><span>Minutes</span></div>
-          <div class="time-box"><div id="seconds">0</div><span>Seconds</span></div>
-        </div>
+    <div class="countdown" id="countdown">
+      <div class="time-box"><div id="days">0</div><span>Days</span></div>
+      <div class="time-box"><div id="hours">0</div><span>Hours</span></div>
+      <div class="time-box"><div id="minutes">0</div><span>Minutes</span></div>
+      <div class="time-box"><div id="seconds">0</div><span>Seconds</span></div>
+    </div>
 
-        <div class="cta-row">
-          <a class="btn primary" href="mailto:info@cmstudios.com?subject=Notify%20me%20when%20CMSTUDIOS%20launches">Notify me</a>
-          <a class="btn ghost" href="#" onclick="copyEmail(); return false;">Copy email</a>
-        </div>
+    <a class="btn primary" href="mailto:cmstudiosza@gmail.com?subject=Notify%20me%20when%20CMSTUDIOS%20launches">Notify me</a>
+    <a class="btn ghost" href="#" onclick="copyEmail(); return false;">Copy email</a>
 
-        <div class="icons">
-          <a href="https://instagram.com/cmstudios" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6.8a1.2 1.2 0 1 1-1.2 1.2A1.2 1.2 0 0 1 18 6.8z"/></svg></a>
-          <a href="https://facebook.com/cmstudios" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M13 22v-8h3l.5-4H13V8.5c0-1.1.3-1.8 1.9-1.8H17V3.1C16.6 3 15.4 3 14 3c-3 0-5 1.8-5 5.1V10H6v4h3v8z"/></svg></a>
-          <a href="https://twitter.com/cmstudios" title="X/Twitter" aria-label="Twitter"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l4.5 6z"/></svg></a>
-          <a href="https://youtube.com/cmstudios" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M23 7.5a4 4 0 0 0-2.8-2.8C18.2 4 12 4 12 4s-6.2 0-8.2.7A4 4 0 0 0 1 7.5 41.7 41.7 0 0 0 0 12a41.7 41.7 0 0 0 1 4.5 4 4 0 0 0 2.8 2.8C5.8 20 12 20 12 20s6.2 0 8.2-.7A4 4 0 0 0 23 16.5 41.7 41.7 0 0 0 24 12a41.7 41.7 0 0 0-1-4.5zM10 15.5v-7l6 3.5z"/></svg></a>
-        </div>
+    <div class="icons">
+      <a href="https://instagram.com/cmstudios" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6.8a1.2 1.2 0 1 1-1.2 1.2A1.2 1.2 0 0 1 18 6.8z"/></svg></a>
+      <a href="https://facebook.com/cmstudios" aria-label="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M13 22v-8h3l.5-4H13V8.5c0-1.1.3-1.8 1.9-1.8H17V3.1C16.6 3 15.4 3 14 3c-3 0-5 1.8-5 5.1V10H6v4h3v8z"/></svg></a>
+      <a href="https://twitter.com/cmstudios" aria-label="Twitter"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l4.5 6z"/></svg></a>
+      <a href="https://youtube.com/cmstudios" aria-label="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23 7.5a4 4 0 0 0-2.8-2.8C18.2 4 12 4 12 4s-6.2 0-8.2.7A4 4 0 0 0 1 7.5 41.7 41.7 0 0 0 0 12a41.7 41.7 0 0 0 1 4.5 4 4 0 0 0 2.8 2.8C5.8 20 12 20 12 20s6.2 0 8.2-.7A4 4 0 0 0 23 16.5 41.7 41.7 0 0 0 24 12a41.7 41.7 0 0 0-1-4.5zM10 15.5v-7l6 3.5z"/></svg></a>
+    </div>
 
-        <footer>© <span id="year"></span> CMSTUDIOS · All rights reserved</footer>
-      </div>
-    </section>
-  </div>
+    <footer>© <span id="year"></span> CMSTUDIOS · All rights reserved</footer>
+  </section>
 
   <script>
-    const EMAIL = "info@cmstudios.com";
-
+    const EMAIL = "cmstudiosza@gmail.com";
     function copyEmail(){
       navigator.clipboard.writeText(EMAIL).then(()=>{
         const btns = document.getElementsByClassName('btn ghost');
@@ -129,7 +130,6 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // countdown 15 days from now
     const countdownEl = document.getElementById("countdown");
     const endDate = new Date();
     endDate.setDate(endDate.getDate() + 15);
@@ -137,17 +137,14 @@
     function updateCountdown(){
       const now = new Date();
       const diff = endDate - now;
-
       if(diff <= 0){
         countdownEl.textContent = "We are live!";
         return;
       }
-
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
-
       document.getElementById('days').textContent = days;
       document.getElementById('hours').textContent = hours;
       document.getElementById('minutes').textContent = minutes;
